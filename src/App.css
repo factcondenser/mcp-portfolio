@@ -1,25 +1,116 @@
+#root {
+  height: 100%;
+  width: 100%;
+}
+
 .App {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  /* text-align: center;
+  min-height: 100%; */
+}
+
+.App__header {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  z-index: -10;
+  background-color: #222;
+  background-image: url('./bgImages/Madison0/bg0-blur.jpg');
+
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.App__location-label {
+  color: #fff;
+  opacity: .1;
+  bottom: 10px;
+  left: 20px;
+  position: absolute;
+}
+
+.App__title {
+  color: #fff;
+  opacity: .9;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.App__title h1 {
+  padding: 0;
+  margin: 0;
+  font-size: 4.5em;
+  font-weight: 700;
+  text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3)
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.App__title img {
+  height: 240px;
+  width: 240px;
+  border-radius: 100%;
+  margin-top: -60px;
+  border: 3px solid #fff
 }
 
-.App-title {
-  font-size: 1.5em;
+.App__title ul {
+  display: grid 
 }
 
-.App-intro {
-  font-size: large;
+.App__title li {
+  display: inline
+}
+
+.App__title li a {
+  opacity: .4;
+  color: #fff
+}
+
+.App__title li a:hover {
+  opacity: .8;
+}
+
+.App__title li i.fa-linkedin:hover {
+  color: #0077b5
+}
+
+.App__title li i.fa-github:hover {
+  color: #333
+}
+
+.App__title li i.fa-quora:hover {
+  color: #A20
+}
+
+.App__title li i.fa-envelope:hover {
+  color: #0072C6
+}
+
+/* Typography */
+
+.lead a {
+  color: #09d
+}
+
+.lead a.audio-clip {
+  color: #fff;
+  opacity: .6
+}
+
+.lead a.audio-clip:hover {
+  text-decoration: none;
+  color: #ddd;
+  opacity: 1.0
 }
 
 @keyframes App-logo-spin {
