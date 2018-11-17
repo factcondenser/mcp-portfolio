@@ -1,0 +1,171 @@
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.App {
+  height: 575vh;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr .4fr .35fr;
+  grid-template-columns: 1fr;
+  grid-template-areas: "header"
+                        "intro"
+                        "work"
+                        "projects"
+                        "about"
+                        "resume"
+                        "footer";
+}
+
+/* Header */
+
+.AppHeader {
+  grid-area: header;
+  /* height: 100%;
+  width: 100%; */
+  position: relative;
+  &__location-label {
+    color: #fff;
+    opacity: .1;
+    bottom: 10px;
+    left: 20px;
+    position: absolute;
+  }
+  &__title {
+    color: #fff;
+    opacity: .9;
+    text-align: center;
+    h1 {
+      padding: 0;
+      margin: 0;
+      font-size: 4.5em;
+      font-weight: 700;
+      text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    }
+    img {
+      height: 240px;
+      width: 240px;
+      border-radius: 100%;
+      margin-top: -60px;
+      border: 3px solid #fff;
+    }
+    .lead a {
+      text-decoration: none;
+      color: #fff;
+      opacity: .6;
+      &:hover {
+        text-decoration: none;
+        color: #ddd;
+        opacity: 1.0;
+      }
+    }
+    ul {
+      margin: 0;
+      padding-left: 0;
+      font-size: 2.5em;
+    }
+    li {
+      display: inline;
+      margin: 0 5px;
+    }
+  }
+}
+
+/* Intro */
+
+.AppBodySection.intro {
+  grid-area: intro;
+  background-color: #fff;
+}
+
+/* Work */
+
+.AppBodySection.work {
+  grid-area: work;
+  background-color: #101010;
+}
+
+/* Projects */
+
+.AppBodySection.projects {
+  grid-area: projects;
+  background-color: purple;
+}
+
+/* About */
+
+.AppBodySection.about {
+  grid-area: about;
+  background-color: azure;
+}
+/* Resume */
+
+.AppBodySection.resume {
+  grid-area: resume;
+  display: grid;
+  align-items: center;
+  background: url(./assets/img/thinker-blur.jpg);
+  background-attachment: fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  h1 {
+    color: #fff;
+    opacity: .9;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    font-size: 4.5em;
+    font-weight: 700;
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+  }
+  a {
+    text-decoration: none;
+    color: #fff;
+    opacity: .6;
+    &:hover {
+      text-decoration: none;
+      color: #ddd;
+      opacity: 1.0;
+    }
+  }
+}
+
+/* Footer */
+
+.AppBodySection.footer {
+  grid-area: footer;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  color: #333;
+}
+
+/* Typography */
+.icon {
+  vertical-align: middle;
+}
+
+.lead {
+  margin: 0 0 20px 0;
+  font-size: 1.3em;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.lead a {
+  color: #09d;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
