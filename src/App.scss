@@ -4,18 +4,21 @@
 }
 
 .App {
-  height: 575vh;
+  height: calc(535vh + 1600px);
   width: 100%;
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr .4fr .35fr;
+  grid-template-rows: 1fr 1fr 400px 1fr 400px 1fr 400px 1fr 400px .35fr;
   grid-template-columns: 1fr;
   grid-template-areas: "header"
-                        "intro"
-                        "work"
-                        "projects"
-                        "about"
-                        "resume"
-                        "footer";
+                       "intro"
+                       "workco"
+                       "work"
+                       "projectsco"
+                       "projects"
+                       "aboutco"
+                       "about"
+                       "resume"
+                       "footer";
 }
 
 /* Header */
@@ -93,11 +96,19 @@
 /* Callout Sections */
 
 .AppCalloutSection {
+  background-color: black;
+  color: white;
+  display: grid;
+  align-items: center;
+  justify-items: center;
   &.work {
-    
+    grid-area: workco;
   }
   &.projects {
-
+    grid-area: projectsco;
+  }
+  &.about {
+    grid-area: aboutco;
   }
 }
 /* Body Sections */
@@ -108,27 +119,31 @@
   }
   &.work {
     grid-area: work;
-    background-color: #101010;
-    // position: absolute;
-    // top: 0;
-    // bottom: 0;
-    // left: 0;
-    // right: 0;
-    // background-attachment: fixed;
-    // background-repeat: no-repeat;
-    // background-position: center center;
-    // -webkit-background-size: cover;
-    // -moz-background-size: cover;
-    // -o-background-size: cover;
-    // background-size: cover;
-    // // z-index: -10;
-    // background-color: #222;
-    // background-image: url('assets/img/hkdense-blur.jpg');
-    // display: grid;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    // z-index: -10;
+    background-color: #222;
+    background-image: url('assets/img/hkdense-blur.jpg');
+    display: grid;
   }
   &.projects {
     grid-area: projects;
-    background-color: purple;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    // z-index: -10;
+    background-color: #222;
+    background-image: url('assets/img/code-blur.jpg');
+    display: grid;
   }
   &.about {
     grid-area: about;

@@ -57,6 +57,9 @@ class App extends Component {
           Some of the things I've made...
         </AppCalloutSection>
         <AppBodySection className='AppBodySection projects'/>
+        <AppCalloutSection className='AppCalloutSection about'>
+          A little more about me...
+        </AppCalloutSection>
         <AppBodySection className='AppBodySection about'/>
         <AppBodySection className='AppBodySection resume'>
           <div>
@@ -226,7 +229,7 @@ class Icon extends Component {
 }
 
 function AppCalloutSection(props) {
-  return <div className={props.className}><h2>{props.children}</h2></div>
+  return <div className={props.className}><h2>>_{props.children}</h2></div>
 }
 
 class AppBodySection extends Component {
