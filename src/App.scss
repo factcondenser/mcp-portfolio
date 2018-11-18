@@ -22,18 +22,19 @@
 
 .AppHeader {
   grid-area: header;
-  /* height: 100%;
-  width: 100%; */
   position: relative;
+  display: grid;
+  justify-items: center;
+  align-items: center;
   &__location-label {
-    color: #fff;
+    color: white;
     opacity: .1;
     bottom: 10px;
     left: 20px;
     position: absolute;
   }
   &__title {
-    color: #fff;
+    color: white;
     opacity: .9;
     text-align: center;
     h1 {
@@ -48,11 +49,28 @@
       width: 240px;
       border-radius: 100%;
       margin-top: -60px;
-      border: 3px solid #fff;
+      border: 3px solid white;
+    }
+    button {
+      background: none;
+      border: none;
+      font-size: 1em;
+      padding: 0;
+      color: white;
+      opacity: .6;
+      &:hover, &:focus {
+        outline: none;
+        color: #ddd;
+        opacity: 1.0;
+      }
+      & svg {
+        vertical-align: middle;
+        margin-bottom: 5px;
+      }
     }
     .lead a {
       text-decoration: none;
-      color: #fff;
+      color: white;
       opacity: .6;
       &:hover {
         text-decoration: none;
@@ -72,77 +90,90 @@
   }
 }
 
-/* Intro */
+/* Callout Sections */
 
-.AppBodySection.intro {
-  grid-area: intro;
-  background-color: #fff;
-}
-
-/* Work */
-
-.AppBodySection.work {
-  grid-area: work;
-  background-color: #101010;
-}
-
-/* Projects */
-
-.AppBodySection.projects {
-  grid-area: projects;
-  background-color: purple;
-}
-
-/* About */
-
-.AppBodySection.about {
-  grid-area: about;
-  background-color: azure;
-}
-/* Resume */
-
-.AppBodySection.resume {
-  grid-area: resume;
-  display: grid;
-  align-items: center;
-  background: url(./assets/img/thinker-blur.jpg);
-  background-attachment: fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  h1 {
-    color: #fff;
-    opacity: .9;
-    text-align: center;
-    padding: 0;
-    margin: 0;
-    font-size: 4.5em;
-    font-weight: 700;
-    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+.AppCalloutSection {
+  &.work {
+    
   }
-  a {
-    text-decoration: none;
-    color: #fff;
-    opacity: .6;
-    &:hover {
+  &.projects {
+
+  }
+}
+/* Body Sections */
+
+.AppBodySection {
+  &.intro {
+    grid-area: intro;
+  }
+  &.work {
+    grid-area: work;
+    background-color: #101010;
+    // position: absolute;
+    // top: 0;
+    // bottom: 0;
+    // left: 0;
+    // right: 0;
+    // background-attachment: fixed;
+    // background-repeat: no-repeat;
+    // background-position: center center;
+    // -webkit-background-size: cover;
+    // -moz-background-size: cover;
+    // -o-background-size: cover;
+    // background-size: cover;
+    // // z-index: -10;
+    // background-color: #222;
+    // background-image: url('assets/img/hkdense-blur.jpg');
+    // display: grid;
+  }
+  &.projects {
+    grid-area: projects;
+    background-color: purple;
+  }
+  &.about {
+    grid-area: about;
+    background-color: azure;
+  }
+  &.resume {
+    grid-area: resume;
+    display: grid;
+    align-items: center;
+    background: url(./assets/img/thinker-blur.jpg);
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    h1 {
+      color: white;
+      opacity: .9;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      font-size: 4.5em;
+      font-weight: 700;
+      text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+    }
+    a {
       text-decoration: none;
-      color: #ddd;
-      opacity: 1.0;
+      color: white;
+      opacity: .6;
+      &:hover {
+        text-decoration: none;
+        color: #ddd;
+        opacity: 1.0;
+      }
     }
   }
-}
-
-/* Footer */
-
-.AppBodySection.footer {
-  grid-area: footer;
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  color: #333;
+  &.footer {
+    grid-area: footer;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    color: #333;
+  }
 }
 
 /* Typography */

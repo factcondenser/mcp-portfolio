@@ -17,38 +17,60 @@ import resumePdf from './resume/markcuipan-resume.pdf';
 // let randomIndex = Math.floor(Math.random() * images.length) + 0;
 // var randomImgRef = images[randomIndex];
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      renderTime: new Date().getTime(),
+      bgScrollOpacity: 0,
+      locLabelOpacity: 0.1, 
+    };
+    this.handleScroll = this.handleScroll.bind(this);
+  }
+
+  handleScroll() {
+    const scrolledFromTop = window.pageYOffset;
+    if (scrolledFromTop < 700) {
+      let opacity = scrolledFromTop / 300;
+      this.setState({bgScrollOpacity: opacity, locLabelOpacity: 0.1 + Math.min(opacity / 2, 0.4)});
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
   render() {
     return (
       <div className='App'>
         <div className='AppHeader'>
-          <AppHeader/>
+          <AppHeader bgScrollOpacity={this.state.bgScrollOpacity} locLabelOpacity={this.state.locLabelOpacity}/>
         </div>
-        <div className='AppBodySection intro'>
-          <AppBodySection>
-          </AppBodySection>
-        </div>
-        <div className='AppBodySection work'>
-          <AppBodySection/>
-        </div>
-        <div className='AppBodySection projects'>
-          <AppBodySection/>
-        </div>
-        <div className='AppBodySection about'>
-          <AppBodySection/>
-        </div>
-        <div className='AppBodySection resume'>
-          <AppBodySection>
+        <AppCalloutSection className='AppCalloutSection work'>
+          Some of the places I've worked...
+        </AppCalloutSection>
+        <AppBodySection className='AppBodySection work'/>
+        <AppCalloutSection className='AppCalloutSection projects'>
+          Some of the things I've made...
+        </AppCalloutSection>
+        <AppBodySection className='AppBodySection projects'/>
+        <AppBodySection className='AppBodySection about'/>
+        <AppBodySection className='AppBodySection resume'>
+          <div>
             <h1>And here's my resumé...</h1>
-            <h1><a href={resumePdf} target='_blank'><FaEye className='icon'/></a></h1>
+            <h1><a href={resumePdf} target='_blank' rel='noopener noreferrer'><FaEye className='icon'/></a></h1>
             {/* <a href="" class="btn btn-lg btn-default btn-special" target="_blank"><i class="fa fa-eye fa-2x"></i></a> */}
-          </AppBodySection>
-        </div>
-        <div className='AppBodySection footer'>
-          <AppBodySection>
+          </div>
+        </AppBodySection>
+        <AppBodySection className='AppBodySection footer'>
+          <div>
             <hr/>
             <p className="lead">Copyright © Mark Cui Pan 2018</p>
-          </AppBodySection>
-        </div>
+          </div>
+        </AppBodySection>
       </div>
     )
   }
@@ -83,7 +105,7 @@ class AppHeader extends Component {
     this.setState({ bgUrl: blurImg, bgScrollUrl: img, locationLabel: foldersHash[folderKey]});
   }
 
-  getBgStyle() {
+  getBgStyle(url, opacity) {
     return { 
       position: 'absolute',
       top: 0,
@@ -98,16 +120,13 @@ class AppHeader extends Component {
       OBackgroundSize: 'cover',
       BackgroundSize: 'cover',
       backgroundColor: '#222',
-      backgroundImage: this.state.bgUrl,
-      display: 'grid',
-      justifyItems: 'center',
-      alignItems: 'center'
+      backgroundImage: url,
+      opacity: opacity
     };
   }
 
   createSoundbite() {
     const clip = document.createElement('audio');
-    console.log(clip.canPlayType);
     if (clip.canPlayType) {
       for (let i = 0; i < arguments.length; i++) {
         const source = document.createElement('source');
@@ -141,16 +160,19 @@ class AppHeader extends Component {
   };
 
   render() {
-    const style = this.getBgStyle();
+    const bgStyle = this.getBgStyle(this.state.bgUrl, 1);
+    const bgScrollStyle = this.getBgStyle(this.state.bgScrollUrl, this.props.bgScrollOpacity)
     const englishName = this.createSoundbite(markcuipan);
     const chineseName = this.createSoundbite(panzizao);
     return (
-      <header className="AppHeader__bg" style={style}>
-        <h2 className="AppHeader__location-label">Madison, WI</h2>
+      <header>
+        <div className="AppHeader__bg" style={bgStyle}></div>
+        <div className="AppHeader__scroll-bg" style={bgScrollStyle}></div>
+        <h2 className="AppHeader__location-label" style={{opacity: this.props.locLabelOpacity}}>{this.state.locationLabel}</h2>
         <div className="AppHeader__title">
           <img src={mcp} alt=""/>
           <h1>Mark</h1>
-          <p className='lead'>Hi! I'm <a onClick={englishName.playclip} className='bold'><FaVolumeUp className='icon'/> Mark Cui Pan</a>. My Chinese name is <a onClick={chineseName.playclip} className='bold'><FaVolumeUp className='icon'/> 潘子早</a>.
+          <p className='lead'>Hi! I'm <button onClick={englishName.playclip}><FaVolumeUp className='icon'/> <b>Mark Cui Pan</b></button>. My Chinese name is <button onClick={chineseName.playclip}><FaVolumeUp className='icon'/> <b>潘子早</b></button>.
           <br/>I <a href="https://markcuipan.com/blog/">write</a>, I <a href="https://markcuipan.com/autonomy/">dream</a>, and, occasionally, I <a href="https://markcuipan.com/tutor/">tutor.</a></p>
           <ul>
             <li><Icon name='GitHub' url='https://github.com/factcondenser' hoverColor='#333'/></li>
@@ -203,6 +225,10 @@ class Icon extends Component {
   }
 }
 
+function AppCalloutSection(props) {
+  return <div className={props.className}><h2>{props.children}</h2></div>
+}
+
 class AppBodySection extends Component {
   constructor(props) {
     super(props);
@@ -212,7 +238,7 @@ class AppBodySection extends Component {
 
   render() {
     return (
-      <div>
+      <div className={this.props.className}>
         {this.props.children}
       </div>
     );
